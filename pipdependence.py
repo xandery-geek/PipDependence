@@ -73,7 +73,7 @@ class DependenceGraph:
         nx.draw_networkx_edges(self.graph, pos=pos, node_size=1000, width=0.5, alpha=0.8)
         plt.show()
 
-class PyDependence:
+class PipDependence:
     store_path = '.'
     store_filename = 'package.json'
 

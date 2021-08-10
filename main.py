@@ -1,8 +1,7 @@
 import argparse
 from argparse import RawTextHelpFormatter
-import json
 from exception import InvalidPackageException
-from pydependence import PyDependence
+from pipdependence import PipDependence
 
 
 if __name__ == "__main__":
@@ -22,9 +21,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
     option = args.option
     if option == 'init' or option == 'refresh':
-        PyDependence.update_package_info()
+        PipDependence.update_package_info()
     elif option == 'package':
-        PyDependence.output_all_packages()
+        PipDependence.output_all_packages()
     elif option == 'dependence'or option == 'unique':
         if args.package == '':
             print('please input package name')
@@ -32,10 +31,10 @@ if __name__ == "__main__":
         else:
             try:
                 if option == 'dependence':
-                    dependence = PyDependence.get_all_dependence(args.package)
+                    dependence = PipDependence.get_all_dependence(args.package)
                     print('\nAll {} unique dependences of {} are as follows:\n'.format(len(dependence), args.package))
                 else:
-                    dependence = PyDependence.get_unique_dependence(args.package)
+                    dependence = PipDependence.get_unique_dependence(args.package)
                     print('\nAll {} dependences of {} are as follows:\n'.format(len(dependence), args.package))
                 dependence.sort()
                 [print(i) for i in dependence]
@@ -46,6 +45,6 @@ if __name__ == "__main__":
                 exit(-1)
 
     elif option == 'visualize':
-        PyDependence.plot_dependence(args.package)
+        PipDependence.plot_dependence(args.package)
     else:
         print("please input valid arguments, '--help' for help")
