@@ -49,6 +49,8 @@ class DependenceGraph:
             exit(-1)
 
         self.graph = nx.DiGraph()
+        for pkg in pkgs.keys():
+            self.graph.add_node(pkg)
         for pkg, pkg_obj in pkgs.items():
             for require_pkg in pkg_obj.require_list:
                 self.graph.add_edge(pkg, require_pkg)

@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# coding=utf-8
+
 import argparse
 from argparse import RawTextHelpFormatter
 from exception import InvalidPackageException
